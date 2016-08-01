@@ -23,7 +23,7 @@ start(){
   # First, install python-pip as prerequisite:
   sudo apt-get -y install python-pip
   # After you can instal docker compose
-  sudo pip install -y docker-compose
+  sudo pip install docker-compose
 
 
 
