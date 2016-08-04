@@ -15,7 +15,7 @@ start(){
   if hash git 2>/dev/null; then
     printf "Git has been installed!\n"
   else
-    sudo apt-get install git && git config
+    sudo apt-get install git
   fi
   # Install Docker
   if hash docker 2>/dev/null; then
