@@ -9,6 +9,7 @@
 
 # Install all need packages
 start(){
+  local MSG_INSTALLED="has been installed!"
   # Update repositores
   sudo apt-get update
   # Instal git
@@ -19,7 +20,7 @@ start(){
   fi
   # Install Docker
   if hash docker 2>/dev/null; then
-    printf "Docker has been installed\n"
+    printf "Docker $MSG_INSTALLED \n"
   else
     printf "\n=====================INSTALL DOCKER===============\n"
     wget -qO- https://get.docker.com/ | sh
@@ -27,21 +28,43 @@ start(){
   # Install Docker Compose
   # First, install python-pip as prerequisite:
   if hash docker-compose 2>/dev/null; then
-    printf "Docker-compose has been installed\n"
+    printf "Docker-compose $MSG_INSTALLED \n"
   else
     printf "\n===================INSTALL DOCKER-COMPOSE===========\n"
     sudo apt-get -y install python-pip
     # After you can instal docker compose
     sudo pip install docker-compose
   fi
-  # Install Pbclip
-  if hash xclip 2>/dev/null; then
-    printf "\nXclip has been installed!\n"
+
+  # Install Rbenv
+  if hash rbenv 2>/dev/null; then
+    printf "\n Rbenv $MSG_INSTALLED \n"
   else
-    sudo apt-get install -y xclip
+    sudo apt-get update && sudo apt-get install -y git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev && \
+      cd && \
+      git clone git://github.com/sstephenson/rbenv.git .rbenv && \
+      echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile && \
+      echo 'eval "$(rbenv init -)"' >> ~/.bash_profile && \
+      git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build && \
+      echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bash_profile && \
+      source ~/.bash_profile
   fi
 
+  # Install ruby 
 
-
+  if hash ruby 2>/dev/null; then
+    printf "\bRuby $MSG_INSTALLED"
+  else
+    rbenv install -v 2.2.3 && \
+      rbenv global 2.2.3 && \
+      rbenv local 2.2.3 && \
+      echo "gem: --no-document" > ~/.gemrc # It is likely that you will not want Rubygems to generate local documentation for each gem that you install, as this process can be lengthy 
+  fi
+  # Install Mina
+  if hash mina 2>/dev/null; then
+    printf "\nMina $MSG_INSTALLED \n"
+  else
+    gem install mina
+  fi
 
 }
