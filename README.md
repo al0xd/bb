@@ -9,7 +9,9 @@ This command will auto install:
 * git
 * docker
 * docker-compose
-
+* rbenv
+* ruby 2.2.3
+* mina
 
 ## I'm still trying to supplement and perfect `bb`
  If you are interested, please build it with me
