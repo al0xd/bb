@@ -36,6 +36,10 @@ start(){
     sudo pip install docker-compose
   fi
 
+  # Install Docker Machine
+  curl -L https://github.com/docker/machine/releases/download/v0.7.0/docker-machine-`uname -s`-`uname -m` > /usr/local/bin/docker-machine && \
+    chmod +x /usr/local/bin/docker-machine
+
   # Install Rbenv
   if hash rbenv 2>/dev/null; then
     printf "\n Rbenv $MSG_INSTALLED \n"
@@ -60,11 +64,11 @@ start(){
       rbenv local 2.2.3 && \
       echo "gem: --no-document" > ~/.gemrc # It is likely that you will not want Rubygems to generate local documentation for each gem that you install, as this process can be lengthy 
   fi
-  # Install Mina
-  if hash mina 2>/dev/null; then
-    printf "\nMina $MSG_INSTALLED \n"
+  # Install Mkdocs
+  if hash mkdocs 2>/dev/null; then
+    printf "\nMkdocs $MSG_INSTALLED \n"
   else
-    gem install mina
+    pip install mkdocs
   fi
 
 }
