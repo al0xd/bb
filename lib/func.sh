@@ -59,6 +59,7 @@ start(){
   if hash ruby 2>/dev/null; then
     printf "\bRuby $MSG_INSTALLED"
   else
+    printf "\b==================== INSTALL RBENV =====================\n"
     rbenv install -v 2.2.3 && \
       rbenv global 2.2.3 && \
       rbenv local 2.2.3 && \
@@ -68,6 +69,7 @@ start(){
   if hash mkdocs 2>/dev/null; then
     printf "\nMkdocs $MSG_INSTALLED \n"
   else
+    printf "\b==================== INSTALL MKDOCS =====================\n"
     pip install mkdocs
   fi
 

@@ -10,8 +10,8 @@ This command will auto install:
 * docker
 * docker-compose
 * rbenv
-* ruby 2.2.3
-* mina
+* ruby with local version: 2.2.3
+* mkdocs
 
 ## I'm still trying to supplement and perfect `bb`
  If you are interested, please build it with me
